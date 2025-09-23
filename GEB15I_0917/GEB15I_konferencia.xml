@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<konferenciák>
+    <konferencia id="0">
+        <cim>Webes adatkezelő környezetek</cim>
+        <hallgatok>
+            <hallgato hid="0">
+                <nev>Kun Dávid</nev>
+                <lakcim>Mezőcsát</lakcim>
+            </hallgato>
+        </hallgatok>
+        <helyszin>Miskolc Egyetem A1/310</helyszin>
+        <eloado eid="0">
+            <nev>Dr Kovács László</nev>
+            <adoszam>6969696969</adoszam>
+            <lakcim>Miskolc</lakcim>
+        </eloado>
+        <datum>2025-09-24</datum>
+    </konferencia>
+</konferenciák>

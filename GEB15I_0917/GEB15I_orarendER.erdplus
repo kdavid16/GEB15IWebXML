@@ -1,0 +1,311 @@
+{
+  "diagramType": 1,
+  "data": {
+    "nodes": [
+      {
+        "id": "dc761504-6074-4f65-9185-d503698ea781",
+        "type": "Entity",
+        "position": {
+          "x": 618,
+          "y": 111
+        },
+        "data": {
+          "label": "óra",
+          "type": "Regular",
+          "isConnectable": false,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "8f0d9c00-92a9-4a0d-bd8f-4ef0800d49fc",
+        "parentId": "dc761504-6074-4f65-9185-d503698ea781",
+        "type": "Attribute",
+        "position": {
+          "x": -109,
+          "y": -95
+        },
+        "data": {
+          "label": "id",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "3e3fb078-d787-4969-b964-459815060ce2",
+        "parentId": "dc761504-6074-4f65-9185-d503698ea781",
+        "type": "Attribute",
+        "position": {
+          "x": 98.24621202458752,
+          "y": -95.24621202458749
+        },
+        "data": {
+          "label": "típus",
+          "types": {
+            "Unique": true
+          },
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "f1089bf3-d8aa-41fe-9f90-2f60e3e14e50",
+        "parentId": "dc761504-6074-4f65-9185-d503698ea781",
+        "type": "Attribute",
+        "position": {
+          "x": -254,
+          "y": 85
+        },
+        "data": {
+          "label": "Tárgy",
+          "types": [],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "09afcb1d-300d-42d6-a93b-4e9c497e55fe",
+        "parentId": "dc761504-6074-4f65-9185-d503698ea781",
+        "type": "Attribute",
+        "position": {
+          "x": 93.24621202458752,
+          "y": 98.24621202458746
+        },
+        "data": {
+          "label": "Oktató",
+          "types": [],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "8fe3b4e6-e538-4fdd-ad25-f11e63dada27",
+        "parentId": "dc761504-6074-4f65-9185-d503698ea781",
+        "type": "Attribute",
+        "position": {
+          "x": -26,
+          "y": 96
+        },
+        "data": {
+          "label": "Szak",
+          "types": [],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "3ca4a0a7-5b41-4a17-adc0-17c4fc624a67",
+        "parentId": "dc761504-6074-4f65-9185-d503698ea781",
+        "type": "Attribute",
+        "position": {
+          "x": -140.24621202458752,
+          "y": 97.24621202458752
+        },
+        "data": {
+          "label": "Időpont",
+          "types": {
+            "Multivalued": false,
+            "Derived": false,
+            "Composite": true
+          },
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "d18456de-f742-415b-841c-a616c5af9cd8",
+        "parentId": "dc761504-6074-4f65-9185-d503698ea781",
+        "type": "Attribute",
+        "position": {
+          "x": 231,
+          "y": 93.00000000000003
+        },
+        "data": {
+          "label": "Helyszín",
+          "types": [],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "3db887a0-174e-4aa2-a25b-b25464fe507d",
+        "parentId": "3ca4a0a7-5b41-4a17-adc0-17c4fc624a67",
+        "type": "Attribute",
+        "position": {
+          "x": -77,
+          "y": 103
+        },
+        "data": {
+          "label": "Nap",
+          "types": [],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "b7be5edc-89f0-4f17-b4e4-00daf9bf8b1e",
+        "parentId": "3ca4a0a7-5b41-4a17-adc0-17c4fc624a67",
+        "type": "Attribute",
+        "position": {
+          "x": 44.24621202458752,
+          "y": 101.75378797541248
+        },
+        "data": {
+          "label": "-tól",
+          "types": [],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "f3aa4c4b-ead6-499f-b320-402d8504188f",
+        "parentId": "3ca4a0a7-5b41-4a17-adc0-17c4fc624a67",
+        "type": "Attribute",
+        "position": {
+          "x": 164,
+          "y": 101
+        },
+        "data": {
+          "label": "-ig",
+          "types": [],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 100,
+          "height": 50
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "7677ca67-f8c4-4bd8-9eac-563895edc2ce",
+        "type": "Attribute",
+        "source": "dc761504-6074-4f65-9185-d503698ea781",
+        "target": "8f0d9c00-92a9-4a0d-bd8f-4ef0800d49fc"
+      },
+      {
+        "id": "15db69be-29e1-44a9-be5e-6cc2c02cd131",
+        "type": "Attribute",
+        "source": "dc761504-6074-4f65-9185-d503698ea781",
+        "target": "3e3fb078-d787-4969-b964-459815060ce2"
+      },
+      {
+        "id": "5d6286ee-5b74-455f-9c90-814a0a7fe0e8",
+        "type": "Attribute",
+        "source": "dc761504-6074-4f65-9185-d503698ea781",
+        "target": "f1089bf3-d8aa-41fe-9f90-2f60e3e14e50"
+      },
+      {
+        "id": "bb2b44dc-ef47-460c-87c0-56d54cde1054",
+        "type": "Attribute",
+        "source": "dc761504-6074-4f65-9185-d503698ea781",
+        "target": "09afcb1d-300d-42d6-a93b-4e9c497e55fe"
+      },
+      {
+        "id": "69f4b21d-c856-4fb5-8904-f280570c908c",
+        "type": "Attribute",
+        "source": "dc761504-6074-4f65-9185-d503698ea781",
+        "target": "8fe3b4e6-e538-4fdd-ad25-f11e63dada27"
+      },
+      {
+        "id": "b0d77436-a0d8-4812-b673-b487fb56d06e",
+        "type": "Attribute",
+        "source": "dc761504-6074-4f65-9185-d503698ea781",
+        "target": "3ca4a0a7-5b41-4a17-adc0-17c4fc624a67"
+      },
+      {
+        "id": "0315641c-ddc8-4476-9286-5044142f5638",
+        "type": "Attribute",
+        "source": "dc761504-6074-4f65-9185-d503698ea781",
+        "target": "d18456de-f742-415b-841c-a616c5af9cd8"
+      },
+      {
+        "id": "4fde75cd-86ae-4798-b161-982fcdd794e6",
+        "type": "Attribute",
+        "source": "3ca4a0a7-5b41-4a17-adc0-17c4fc624a67",
+        "target": "3db887a0-174e-4aa2-a25b-b25464fe507d"
+      },
+      {
+        "id": "63680467-7919-4bb6-9969-dc92471df082",
+        "type": "Attribute",
+        "source": "3ca4a0a7-5b41-4a17-adc0-17c4fc624a67",
+        "target": "b7be5edc-89f0-4f17-b4e4-00daf9bf8b1e"
+      },
+      {
+        "id": "22cd26ca-3d04-41c7-8fb3-86f11f1d9cf5",
+        "type": "Attribute",
+        "source": "3ca4a0a7-5b41-4a17-adc0-17c4fc624a67",
+        "target": "f3aa4c4b-ead6-499f-b320-402d8504188f"
+      }
+    ],
+    "viewport": {
+      "x": 26.35275281648063,
+      "y": 87.11165168988836,
+      "zoom": 1
+    }
+  },
+  "name": "GEB15I_orarend.xdm",
+  "folder": {
+    "name": "Diagrams",
+    "folderType": 1,
+    "depth": 0,
+    "id": 46167
+  },
+  "id": 37799,
+  "updatedAtTimestamp": 1758615358
+}
