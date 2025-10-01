@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   targetNamespace="http://example.com/dogworld"
+		   xmlns:dw="http://example.com/dogworld"
+		   elementFormDefault="qualified"
+		   attributeFormDefault="unqualified">
+
+	<xs:simpleType name="Isbn10Type">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="NevType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="JellemzesType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="SzereploType">
+		<xs:sequence>
+			<xs:element name="nev" type="dw:NevType"/>
+			<xs:element name="baratja" type="dw:NevType" minOccurs="0"/>
+			<xs:element name="szuletett" type="xs:date"/>
+			<xs:element name="jellemzes" type="dw:JellemzesType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="KonyvType">
+		<xs:sequence>
+			<xs:element name="cim" type="xs:string"/>
+			<xs:element name="szerzo" type="xs:string"/>
+			<xs:element name="szereplo" type="dw:SzereploType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="isbn" type="dw:Isbn10Type" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="KonyvekType">
+		<xs:sequence>
+			<xs:element name="konyv" type="dw:KonyvType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="konyvek" type="dw:KonyvekType"/>
+
+	<xs:unique name="egyediIsbn">
+		<xs:selector xpath="dw:konyv"/>
+		<xs:field xpath="@isbn"/>
+	</xs:unique>
+
+</xs:schema>
