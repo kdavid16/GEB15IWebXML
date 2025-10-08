@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.freeformatter.com"
+           xmlns="https://www.freeformatter.com"
+           elementFormDefault="qualified">
+
+  <xs:element name="KD_orarend">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="ora" type="oraType" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:complexType name="oraType">
+    <xs:sequence>
+      <xs:element name="targy" type="xs:string"/>
+      <xs:element name="idopont" type="idopontType"/>
+      <xs:element name="helyszin" type="xs:string"/>
+      <xs:element name="oktato" type="xs:string"/>
+      <xs:element name="szak" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="id" use="required" type="xs:nonNegativeInteger"/>
+    <xs:attribute name="tipus" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="elmelet"/>
+          <xs:enumeration value="gyakorlat"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <xs:complexType name="idopontType">
+    <xs:sequence>
+      <xs:element name="nap" type="napType"/>
+      <xs:element name="tol" type="timeHHMM"/>
+      <xs:element name="ig" type="timeHHMM"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:simpleType name="napType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Hétfő"/>
+      <xs:enumeration value="Kedd"/>
+      <xs:enumeration value="Szerda"/>
+      <xs:enumeration value="Csütörtök"/>
+      <xs:enumeration value="Péntek"/>
+      <xs:enumeration value="Szombat"/>
+      <xs:enumeration value="Vasárnap"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="timeHHMM">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([01][0-9]|2[0-3]):[0-5][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
