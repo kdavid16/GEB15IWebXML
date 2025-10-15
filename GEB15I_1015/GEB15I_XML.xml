@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GEB15I_XML xmlns="http://www.example.org/GEB15I_XML"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.example.org/GEB15I_XML GEB15I_XML.xsd">
+
+    <etterem elkod="e01">
+        <csillag>3</csillag>
+        <nev>5centes vendéglő</nev>
+        <cim>
+            <varos>Miskolc</varos>
+            <utca>Széchenyi István út</utca>
+            <hazszam>20</hazszam>
+        </cim>
+    </etterem>
+
+    <fozesi fokod="f01" szkod_ref="sz01" elkod_ref="e01">
+        <nev>Magyaros</nev>
+        <elelmiszer>Gulyásleves</elelmiszer>
+    </fozesi>
+
+    <szakacs szkod="sz01">
+        <nev>Nagy Sándor</nev>
+        <vegzettseg>Mester-szakács</vegzettseg>
+    </szakacs>
+
+    <gyakorlat gykod="gy01" szkod_ref="sz01" elkod_ref="e01">
+        <nev>Konyhafőnök</nev>
+        <kezdet>2018-05-01</kezdet>
+        <idotartam>5 év</idotartam>
+    </gyakorlat>
+
+    <vendeg vkod="v01">
+        <nev>Kiss Mária</nev>
+        <cim>
+            <varos>Miskolc</varos>
+            <utca>Király utca</utca>
+            <hazszam>15</hazszam>
+        </cim>
+    </vendeg>
+
+    <rendeles vkod_ref="v01" elkod_ref="e01">
+        <elelmiszer>Gulyásleves</elelmiszer>
+        <koltseg>2500</koltseg>
+        <tetel>2</tetel>
+    </rendeles>
+
+    <etterem elkod="e02">
+        <csillag>5</csillag>
+        <nev>Tropicana vendéglő</nev>
+        <cim>
+            <varos>Budapest</varos>
+            <utca>Andrássy út</utca>
+            <hazszam>101</hazszam>
+        </cim>
+    </etterem>
+    
+    <fozesi fokod="f02" szkod_ref="sz02" elkod_ref="e02">
+        <nev>Karibi</nev>
+        <elelmiszer>Tengergyümölcsei tál</elelmiszer>
+    </fozesi>
+
+    <szakacs szkod="sz02">
+        <nev>Horváth Béla</nev>
+        <vegzettseg>Séf</vegzettseg>
+    </szakacs>
+
+    <gyakorlat gykod="gy02" szkod_ref="sz02" elkod_ref="e02">
+        <nev>Szakács</nev>
+        <kezdet>2020-01-10</kezdet>
+        <idotartam>3 év</idotartam>
+    </gyakorlat>
+
+    <vendeg vkod="v02">
+        <nev>Szabó János</nev>
+        <cim>
+            <varos>Budapest</varos>
+            <utca>Váci utca</utca>
+            <hazszam>34</hazszam>
+        </cim>
+    </vendeg>
+
+    <rendeles vkod_ref="v02" elkod_ref="e02">
+        <elelmiszer>Tengergyümölcsei tál</elelmiszer>
+        <koltseg>8900</koltseg>
+        <tetel>1</tetel>
+    </rendeles>
+
+</GEB15I_XML>

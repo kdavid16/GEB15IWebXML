@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GEB15I_XML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://www.sajatTipus.hu"
+            xsi:schemaLocation="http://www.sajatTipus.hu GEB15I_XMLSchemaGPT.xsd">
+
+    <etterem>
+        <ekod>ET01</ekod>
+        <nev>5Centes vendéglő</nev>
+        <csillag>3</csillag>
+        <cim>
+            <varos>Budapest</varos>
+            <utca>Kossuth Lajos utca</utca>
+            <hazszam>12</hazszam>
+        </cim>
+
+        <foszakacs>
+            <fkod>F01</fkod>
+            <nev>Bors Miklós</nev>
+            <eletkor>45</eletkor>
+            <vegzettseg>Mesterszakács</vegzettseg>
+        </foszakacs>
+
+        <szakacs>
+            <skod>S01</skod>
+            <nev>Tóth Márton</nev>
+            <reszleg>Főételek</reszleg>
+            <vegzettseg>Szakács</vegzettseg>
+        </szakacs>
+
+        <gyakornok>
+            <gykod>G01</gykod>
+            <nev>Kovács László</nev>
+            <gyakorlat>Konyhai segéd</gyakorlat>
+            <muszak>Délelőtt</muszak>
+            <kezdete>2025-03-01</kezdete>
+            <idotartama>3 hónap</idotartama>
+        </gyakornok>
+
+        <vendeg>
+            <vkod>V01</vkod>
+            <nev>Nagy János</nev>
+            <eletkor>32</eletkor>
+            <cim>
+                <varos>Pilisvörösvár</varos>
+                <utca>Petőfi Sándor utca</utca>
+                <hazszam>7</hazszam>
+            </cim>
+        </vendeg>
+
+        <rendeles>
+            <osszeg>5200</osszeg>
+            <etel>Marhapörkölt galuskával</etel>
+        </rendeles>
+    </etterem>
+
+    <etterem>
+        <ekod>ET02</ekod>
+        <nev>Tropicana vendéglő</nev>
+        <csillag>5</csillag>
+        <cim>
+            <varos>Siófok</varos>
+            <utca>Balaton utca</utca>
+            <hazszam>5</hazszam>
+        </cim>
+
+        <foszakacs>
+            <fkod>F02</fkod>
+            <nev>Varga Lilla</nev>
+            <eletkor>39</eletkor>
+            <vegzettseg>Mesterszakács</vegzettseg>
+        </foszakacs>
+
+        <szakacs>
+            <skod>S02</skod>
+            <nev>Horváth Bence</nev>
+            <reszleg>Grill</reszleg>
+            <vegzettseg>Szakács</vegzettseg>
+        </szakacs>
+
+        <gyakornok>
+            <gykod>G02</gykod>
+            <nev>Kelemen Anna</nev>
+            <gyakorlat>Desszert előkészítő</gyakorlat>
+            <muszak>Délután</muszak>
+            <kezdete>2025-04-10</kezdete>
+            <idotartama>2 hónap</idotartama>
+        </gyakornok>
+
+        <vendeg>
+            <vkod>V02</vkod>
+            <nev>Kiss Gergely</nev>
+            <eletkor>27</eletkor>
+            <cim>
+                <varos>Debrecen</varos>
+                <utca>Kálvin tér</utca>
+                <hazszam>3</hazszam>
+            </cim>
+        </vendeg>
+
+        <rendeles>
+            <osszeg>8700</osszeg>
+            <etel>Tenger gyümölcsei rizottó</etel>
+        </rendeles>
+    </etterem>
+</GEB15I_XML>

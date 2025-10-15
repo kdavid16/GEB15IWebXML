@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:sajatTipus="http://www.sajatTipus.hu"
+    targetNamespace="http://www.sajatTipus.hu"
+    elementFormDefault="qualified">
+
+    <!-- ==== SAJÁT TÍPUSOK ==== -->
+
+    <xs:complexType name="CimTipus">
+        <xs:sequence>
+            <xs:element name="varos" type="xs:string"/>
+            <xs:element name="utca" type="xs:string"/>
+            <xs:element name="hazszam" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FoszakacsTipus">
+        <xs:sequence>
+            <xs:element name="fkod" type="xs:string"/>
+            <xs:element name="nev" type="xs:string"/>
+            <xs:element name="eletkor" type="xs:positiveInteger"/>
+            <xs:element name="vegzettseg" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SzakacsTipus">
+        <xs:sequence>
+            <xs:element name="skod" type="xs:string"/>
+            <xs:element name="nev" type="xs:string"/>
+            <xs:element name="reszleg" type="xs:string"/>
+            <xs:element name="vegzettseg" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GyakornokTipus">
+        <xs:sequence>
+            <xs:element name="gykod" type="xs:string"/>
+            <xs:element name="nev" type="xs:string"/>
+            <xs:element name="gyakorlat" type="xs:string"/>
+            <xs:element name="muszak" type="xs:string"/>
+            <xs:element name="kezdete" type="xs:date"/>
+            <xs:element name="idotartama" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="VendegTipus">
+        <xs:sequence>
+            <xs:element name="vkod" type="xs:string"/>
+            <xs:element name="nev" type="xs:string"/>
+            <xs:element name="eletkor" type="xs:positiveInteger"/>
+            <xs:element name="cim" type="sajatTipus:CimTipus"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RendelesTipus">
+        <xs:sequence>
+            <xs:element name="osszeg" type="xs:positiveInteger"/>
+            <xs:element name="etel" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EtteremTipus">
+        <xs:sequence>
+            <xs:element name="ekod" type="xs:string"/>
+            <xs:element name="nev" type="xs:string"/>
+            <xs:element name="csillag" type="xs:positiveInteger"/>
+            <xs:element name="cim" type="sajatTipus:CimTipus"/>
+            <xs:element name="foszakacs" type="sajatTipus:FoszakacsTipus"/>
+            <xs:element name="szakacs" type="sajatTipus:SzakacsTipus" maxOccurs="unbounded"/>
+            <xs:element name="gyakornok" type="sajatTipus:GyakornokTipus" maxOccurs="unbounded"/>
+            <xs:element name="vendeg" type="sajatTipus:VendegTipus" maxOccurs="unbounded"/>
+            <xs:element name="rendeles" type="sajatTipus:RendelesTipus" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ==== GYÖKÉR ELEM ==== -->
+    <xs:element name="GEB15I_vendeglatas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="etterem" type="sajatTipus:EtteremTipus" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <!-- ==== KULCSOK ÉS IDEGEN KULCSOK ==== -->
+
+        <!-- étterem azonosító kulcs -->
+        <xs:key name="EtteremKulcs">
+            <xs:selector xpath="sajatTipus:etterem"/>
+            <xs:field xpath="sajatTipus:ekod"/>
+        </xs:key>
+
+        <!-- főszakács azonosítója az étteremhez kötve -->
+        <xs:keyref name="FoszakacsHivatkozas" refer="EtteremKulcs">
+            <xs:selector xpath="sajatTipus:etterem/sajatTipus:foszakacs"/>
+            <xs:field xpath="sajatTipus:fkod"/>
+        </xs:keyref>
+
+        <!-- szakács az étteremhez kötve -->
+        <xs:keyref name="SzakacsHivatkozas" refer="EtteremKulcs">
+            <xs:selector xpath="sajatTipus:etterem/sajatTipus:szakacs"/>
+            <xs:field xpath="sajatTipus:skod"/>
+        </xs:keyref>
+
+        <!-- gyakornok az étteremhez kötve -->
+        <xs:keyref name="GyakornokHivatkozas" refer="EtteremKulcs">
+            <xs:selector xpath="sajatTipus:etterem/sajatTipus:gyakornok"/>
+            <xs:field xpath="sajatTipus:gykod"/>
+        </xs:keyref>
+
+        <!-- vendég az étteremhez kötve -->
+        <xs:keyref name="VendegHivatkozas" refer="EtteremKulcs">
+            <xs:selector xpath="sajatTipus:etterem/sajatTipus:vendeg"/>
+            <xs:field xpath="sajatTipus:vkod"/>
+        </xs:keyref>
+    </xs:element>
+</xs:schema>

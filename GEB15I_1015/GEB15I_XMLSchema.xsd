@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/GEB15I_XML"
+           xmlns:sajatTipus="http://www.example.org/GEB15I_XML"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="kodTipus">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z]{1,2}[0-9]{2,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="csillagTipus">
+        <xs:restriction base="xs:integer">
+            [cite_start]<xs:minInclusive value="1"/> [cite: 2]
+            <xs:maxInclusive value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="szovegTipus">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="cimTipus">
+        <xs:sequence>
+            <xs:element name="varos" type="sajatTipus:szovegTipus"/>
+            [cite_start]<xs:element name="utca" type="sajatTipus:szovegTipus"/> [cite: 3]
+            <xs:element name="hazszam" type="sajatTipus:szovegTipus"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="GEB15I_XML">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="etterem" type="sajatTipus:etteremTipus"/>
+                <xs:element name="fozesi" type="sajatTipus:fozesiTipus"/>
+                [cite_start]<xs:element name="szakacs" type="sajatTipus:szakacsTipus"/> [cite: 4]
+                <xs:element name="gyakorlat" type="sajatTipus:gyakorlatTipus"/>
+                <xs:element name="vendeg" type="sajatTipus:vendegTipus"/>
+                <xs:element name="rendeles" type="sajatTipus:rendelesTipus"/>
+            </xs:choice>
+        </xs:complexType>
+
+        <xs:key name="etteremKey">
+            <xs:selector xpath="sajatTipus:etterem"/>
+            <xs:field xpath="@elkod"/>
+        </xs:key>
+        <xs:key name="szakacsKey">
+            <xs:selector xpath="sajatTipus:szakacs"/>
+            <xs:field xpath="@szkod"/>
+        </xs:key>
+        <xs:key name="vendegKey">
+            <xs:selector xpath="sajatTipus:vendeg"/>
+            <xs:field xpath="@vkod"/>
+        </xs:key>
+
+        <xs:keyref name="fozesiEtteremRef" refer="sajatTipus:etteremKey">
+            <xs:selector xpath="sajatTipus:fozesi"/>
+            <xs:field xpath="@elkod_ref"/>
+        </xs:keyref>
+        <xs:keyref name="fozesiSzakacsRef" refer="sajatTipus:szakacsKey">
+            <xs:selector xpath="sajatTipus:fozesi"/>
+            <xs:field xpath="@szkod_ref"/>
+        </xs:keyref>
+
+        <xs:keyref name="gyakorlatEtteremRef" refer="sajatTipus:etteremKey">
+            <xs:selector xpath="sajatTipus:gyakorlat"/>
+            <xs:field xpath="@elkod_ref"/>
+        </xs:keyref>
+        <xs:keyref name="gyakorlatSzakacsRef" refer="sajatTipus:szakacsKey">
+            <xs:selector xpath="sajatTipus:gyakorlat"/>
+            <xs:field xpath="@szkod_ref"/>
+        </xs:keyref>
+
+        <xs:keyref name="rendelesEtteremRef" refer="sajatTipus:etteremKey">
+            <xs:selector xpath="sajatTipus:rendeles"/>
+            <xs:field xpath="@elkod_ref"/>
+        </xs:keyref>
+        <xs:keyref name="rendelesVendegRef" refer="sajatTipus:vendegKey">
+            <xs:selector xpath="sajatTipus:rendeles"/>
+            <xs:field xpath="@vkod_ref"/>
+        </xs:keyref>
+
+    </xs:element>
+
+    <xs:complexType name="etteremTipus">
+        [cite_start]<xs:sequence> [cite: 5]
+            <xs:element name="csillag" type="sajatTipus:csillagTipus"/>
+            <xs:element name="nev" type="sajatTipus:szovegTipus"/>
+            <xs:element name="cim" type="sajatTipus:cimTipus"/>
+        </xs:sequence>
+        <xs:attribute name="elkod" type="sajatTipus:kodTipus" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="fozesiTipus">
+        <xs:sequence>
+            <xs:element name="nev" type="sajatTipus:szovegTipus"/>
+            [cite_start]<xs:element name="elelmiszer" type="sajatTipus:szovegTipus"/> [cite: 6]
+        </xs:sequence>
+        <xs:attribute name="fokod" type="sajatTipus:kodTipus" use="required"/>
+        <xs:attribute name="szkod_ref" type="sajatTipus:kodTipus" use="required"/>
+        <xs:attribute name="elkod_ref" type="sajatTipus:kodTipus" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="szakacsTipus">
+        [cite_start]<xs:sequence> [cite: 7]
+            <xs:element name="nev" type="sajatTipus:szovegTipus"/>
+            <xs:element name="vegzettseg" type="sajatTipus:szovegTipus"/>
+        </xs:sequence>
+        <xs:attribute name="szkod" type="sajatTipus:kodTipus" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="gyakorlatTipus">
+        <xs:sequence>
+            <xs:element name="nev" type="sajatTipus:szovegTipus"/>
+            <xs:element name="kezdet" type="xs:date"/>
+            <xs:element name="idotartam" type="sajatTipus:szovegTipus"/>
+        </xs:sequence>
+        <xs:attribute name="gykod" type="sajatTipus:kodTipus" use="required"/>
+        [cite_start]<xs:attribute name="szkod_ref" type="sajatTipus:kodTipus" use="required"/> [cite: 8]
+        <xs:attribute name="elkod_ref" type="sajatTipus:kodTipus" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="vendegTipus">
+        <xs:sequence>
+            <xs:element name="nev" type="sajatTipus:szovegTipus"/>
+            <xs:element name="cim" type="sajatTipus:cimTipus"/>
+        </xs:sequence>
+        <xs:attribute name="vkod" type="sajatTipus:kodTipus" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="rendelesTipus">
+        <xs:sequence>
+            [cite_start]<xs:element name="elelmiszer" type="sajatTipus:szovegTipus"/> [cite: 9]
+            <xs:element name="koltseg" type="xs:positiveInteger"/>
+            <xs:element name="tetel" type="xs:positiveInteger"/>
+        </xs:sequence>
+        <xs:attribute name="vkod_ref" type="sajatTipus:kodTipus" use="required"/>
+        <xs:attribute name="elkod_ref" type="sajatTipus:kodTipus" use="required"/>
+    </xs:complexType>
+
+</xs:schema>
