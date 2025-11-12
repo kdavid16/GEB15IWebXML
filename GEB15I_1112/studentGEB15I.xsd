@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  <!-- Gyökérelem: class -->
+  <xs:element name="class">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Többször előforduló student elemek -->
+        <xs:element name="student" maxOccurs="unbounded" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- student/id komplex elem -->
+              <xs:element name="id">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="keresztnev" type="xs:string"/>
+                    <xs:element name="vezeteknev" type="xs:string"/>
+                    <xs:element name="becenev" type="xs:string"/>
+                    <xs:element name="kor" type="korTipus"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Egyszerű típus: életkor korlátozással -->
+  <xs:simpleType name="korTipus">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="120"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
