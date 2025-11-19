@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEB15I Órarend Feldolgozó</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        #control-panel {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #output {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .ora-blokk {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #2ecc71; /* Zöld csík a szélén */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .mezo-sor {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .cimke {
+            font-weight: bold;
+            color: #555;
+            width: 80px;
+            display: inline-block;
+        }
+
+        .ertek {
+            color: #000;
+        }
+
+        .error {
+            color: red;
+            background: #ffe6e6;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GEB15I Órarend 2025</h1>
+
+    <div id="control-panel">
+        <p>Kattints a gombra az <strong>orarendGEB15I.json</strong> betöltéséhez!</p>
+        <button id="loadBtn">Órarend betöltése</button>
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+        // Ez a mintaadat csak akkor töltődik be, ha a fetch nem találja a fájlt (pl. előnézeti módban)
+        const fallbackData = {
+            "GEB15I_orarend": {
+                "ora": [
+                    {
+                        "targy": "Minta Tárgy (Fájl nem található)",
+                        "idopont": { "nap": "Hétfő", "tol": 8, "ig": 10 },
+                        "helyszin": "Inf. 103",
+                        "oktato": "Dr. Minta Oktató",
+                        "szak": "G3BIW"
+                    }
+                ]
+            }
+        };
+
+        document.getElementById('loadBtn').addEventListener('click', function() {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '<p>Betöltés...</p>';
+
+            // JSON fájl lekérése
+            fetch('orarendGEB15I.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP hiba, státusz: " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    megjelenit(data);
+                })
+                .catch(error => {
+                    console.warn("Hiba történt a fájl betöltésekor (valószínűleg nincs a szerveren vagy CORS hiba):", error);
+                    // Ha hiba van (pl. nincs meg a fájl), akkor is megjelenítünk valamit a demó kedvéért
+                    // ÉLES HASZNÁLATNÁL: Ezt a catch ágat érdemes hibaüzenetre cserélni
+                    outputDiv.innerHTML = `<div class="error">Nem sikerült betölteni az orarendGEB15I.json fájlt.<br>Ellenőrizd, hogy létezik-e a fájl és Live Server-t használsz-e!<br><small>Hibaüzenet: ${error.message}</small></div>`;
+                    
+                    // Opcionális: Ha a felhasználó csak teszteli fájl nélkül, a mintaadatot megjeleníthetjük:
+                    // megjelenit(fallbackData); 
+                });
+        });
+
+        function megjelenit(data) {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = ''; // Töröljük a "Betöltés..." szöveget
+
+            // A JSON struktúra alapján: data -> GEB15I_orarend -> ora (tömb)
+            const rootKey = "GEB15I_orarend"; // Vagy Object.keys(data)[0] ha dinamikus
+            
+            if (!data[rootKey] || !data[rootKey].ora) {
+                outputDiv.innerHTML = '<p class="error">Hibás JSON struktúra!</p>';
+                return;
+            }
+
+            const orak = data[rootKey].ora;
+
+            orak.forEach(ora => {
+                // HTML elem létrehozása minden órához
+                const oraDiv = document.createElement('div');
+                oraDiv.className = 'ora-blokk';
+
+                // Tartalom összeállítása (Tárgy, Helyszín, Oktató, Szak)
+                const tartalom = `
+                    <div class="mezo-sor">
+                        <span class="cimke">Tárgy:</span>
+                        <span class="ertek">${ora.targy}</span>
+                    </div>
+                     <div class="mezo-sor">
+                        <span class="cimke">Időpont:</span>
+                        <span class="ertek">${ora.idopont.nap}, ${ora.idopont.tol}-${ora.idopont.ig} óra</span>
+                    </div>
+                    <div class="mezo-sor">
+                        <span class="cimke">Helyszín:</span>
+                        <span class="ertek">${ora.helyszin}</span>
+                    </div>
+                    <div class="mezo-sor">
+                        <span class="cimke">Oktató:</span>
+                        <span class="ertek">${ora.oktato}</span>
+                    </div>
+                    <div class="mezo-sor">
+                        <span class="cimke">Szak:</span>
+                        <span class="ertek">${ora.szak}</span>
+                    </div>
+                `;
+
+                oraDiv.innerHTML = tartalom;
+                outputDiv.appendChild(oraDiv);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class>
+  <student id="01">
+    <id>
+      <keresztnev>Dávid</keresztnev>
+      <vezeteknev>Kun</vezeteknev>
+      <becenev>Kun</becenev>
+      <kor>21</kor>
+    </id>
+  </student>
+  <student>
+    <id>
+      <keresztnev>Levente</keresztnev>
+      <vezeteknev>Balla</vezeteknev>
+      <becenev>Levike</becenev>
+      <kor>22</kor>
+    </id>
+  </student>
+  <student>
+    <id>
+      <keresztnev>Rajmund</keresztnev>
+      <vezeteknev>Nagy</vezeteknev>
+      <becenev>Rajm1</becenev>
+      <kor>22</kor>
+    </id>
+  </student>
+  <student>
+    <id>
+      <keresztnev>Kristóf</keresztnev>
+      <vezeteknev>Nagy</vezeteknev>
+      <becenev>Kris</becenev>
+      <kor>21</kor>
+    </id>
+  </student>
+</class>

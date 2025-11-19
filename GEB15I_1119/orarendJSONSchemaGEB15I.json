@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GEB15I Órarend Schema",
+  "description": "JSON Schema a GEB15I_orarend struktúra validálásához",
+  "type": "object",
+  "properties": {
+    "GEB15I_orarend": {
+      "type": "object",
+      "properties": {
+        "ora": {
+          "type": "array",
+          "description": "Az órák listája",
+          "items": {
+            "type": "object",
+            "properties": {
+              "targy": {
+                "type": "string",
+                "description": "A tantárgy neve"
+              },
+              "idopont": {
+                "type": "object",
+                "description": "Az óra időpontja",
+                "properties": {
+                  "nap": {
+                    "type": "string",
+                    "description": "A hét napja"
+                  },
+                  "tol": {
+                    "type": "integer",
+                    "description": "Kezdési időpont (óra)",
+                    "minimum": 0,
+                    "maximum": 23
+                  },
+                  "ig": {
+                    "type": "integer",
+                    "description": "Befejezési időpont (óra)",
+                    "minimum": 0,
+                    "maximum": 24
+                  }
+                },
+                "required": [
+                  "nap",
+                  "tol",
+                  "ig"
+                ]
+              },
+              "helyszin": {
+                "type": "string",
+                "description": "Az óra helyszíne"
+              },
+              "oktato": {
+                "type": "string",
+                "description": "Az oktató neve"
+              },
+              "szak": {
+                "type": "string",
+                "description": "A szak megnevezése"
+              }
+            },
+            "required": [
+              "targy",
+              "idopont",
+              "helyszin",
+              "oktato",
+              "szak"
+            ]
+          }
+        }
+      },
+      "required": [
+        "ora"
+      ]
+    }
+  },
+  "required": [
+    "GEB15I_orarend"
+  ]
+}
