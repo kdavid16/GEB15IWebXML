@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file.css" type="text/css"?>
+<autok>
+    <auto rsz="ABC-100">
+        <tipus>Fiat</tipus>
+        <ar>21233</ar>
+        <szin>piros</szin>
+        <tualj>
+            <nev>Zoli</nev>
+            <varos>Eger</varos>
+        </tualj>
+        </auto>
+        <auto rsz="ABC-101">
+        <tipus>Skoda</tipus>
+        <ar>44233</ar>
+        <szin>fehér</szin>
+        <tualj>
+            <nev>Peti</nev>
+            <varos>Miskolc</varos>
+        </tualj>
+        </auto>
+        <auto rsz="ABC-102">
+        <tipus>Opel</tipus>
+        <ar>31233</ar>
+        <szin>szürke</szin>
+        <tualj>
+            <nev>Tomi</nev>
+            <varos>Miskolc</varos>
+        </tualj>
+        </auto>
+        <auto rsz="ABC-103">
+        <tipus>Opel</tipus>
+        <ar>21233</ar>
+        <szin>kék</szin>
+        <tualj>
+            <nev>Sanyi</nev>
+            <varos>Miskolc</varos>
+        </tualj>
+        </auto>
+    </autok>

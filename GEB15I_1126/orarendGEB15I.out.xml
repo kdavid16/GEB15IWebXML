@@ -1,0 +1,182 @@
+<html>
+   <head>
+      <style>
+      table {
+        border-collapse: collapse;
+        border: 2px solid black;
+      }
+      th {
+        background-color: #9acd32; /* A képen látható zöldes szín */
+        color: black;
+        text-align: left;
+        padding: 5px;
+        border: 1px solid gray;
+      }
+      td {
+        padding: 5px;
+        border: 1px solid gray;
+      }
+    </style>
+   </head>
+   <body>
+      <h2>Mérnökinformatika BSc - Órarend</h2>
+      <table>
+         <thead>
+            <tr>
+               <th>Nap</th>
+               <th>Időpont</th>
+               <th>Tárgy</th>
+               <th>Típus</th>
+               <th>Helyszín</th>
+               <th>Oktató</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="elmelet">
+               <td>Hétfő</td>
+               <td>08:00 - 10:00</td>
+               <td>
+                  <strong>Elektrotechnika és elektronika</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-elmelet">Elmélet</span>
+               </td>
+               <td>Előadó 4</td>
+               <td>Szabó Nórbert István</td>
+            </tr>
+            <tr class="elmelet">
+               <td>Hétfő</td>
+               <td>10:00 - 12:00</td>
+               <td>
+                  <strong>Web technológiák 1.</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-elmelet">Elmélet</span>
+               </td>
+               <td>Előadó 5</td>
+               <td>Dr. Agárdi Anita</td>
+            </tr>
+            <tr class="gyakorlat">
+               <td>Hétfő</td>
+               <td>14:00 - 16:00</td>
+               <td>
+                  <strong>Web technológiák 1.</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-gyakorlat">Gyakorlat</span>
+               </td>
+               <td>L101</td>
+               <td>Dr. Agárdi Anita</td>
+            </tr>
+            <tr class="elmelet">
+               <td>Hétfő</td>
+               <td>16:00 - 18:00</td>
+               <td>
+                  <strong>Mobil programozás alapok</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-elmelet">Elmélet</span>
+               </td>
+               <td>L101</td>
+               <td>Dr. Agárdi Anita</td>
+            </tr>
+            <tr class="gyakorlat">
+               <td>Hétfő</td>
+               <td>18:00 - 20:00</td>
+               <td>
+                  <strong>Mobil programozás alapok</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-gyakorlat">Gyakorlat</span>
+               </td>
+               <td>L101</td>
+               <td>Dr. Agárdi Anita</td>
+            </tr>
+            <tr class="elmelet">
+               <td>Kedd</td>
+               <td>08:00 - 10:00</td>
+               <td>
+                  <strong>Windows rendszergazda</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-elmelet">Elmélet</span>
+               </td>
+               <td>L101</td>
+               <td>Dr. Wagner György</td>
+            </tr>
+            <tr class="elmelet">
+               <td>Kedd</td>
+               <td>10:00 - 12:00</td>
+               <td>
+                  <strong>Mesterséges intelligencia alapok</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-elmelet">Elmélet</span>
+               </td>
+               <td>Előadó 32</td>
+               <td>Kunné Dr. Tamás Judit</td>
+            </tr>
+            <tr class="gyakorlat">
+               <td>Kedd</td>
+               <td>12:00 - 14:00</td>
+               <td>
+                  <strong>Mesterséges intelligencia alapok</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-gyakorlat">Gyakorlat</span>
+               </td>
+               <td>Előadó 32</td>
+               <td>Kunné Dr. Tamás Judit</td>
+            </tr>
+            <tr class="gyakorlat">
+               <td>Kedd</td>
+               <td>14:00 - 16:00</td>
+               <td>
+                  <strong>Elektrotechnika és elektronika</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-gyakorlat">Gyakorlat</span>
+               </td>
+               <td>A1/317</td>
+               <td>Dr. Kozsely Gábor</td>
+            </tr>
+            <tr class="gyakorlat">
+               <td>Kedd</td>
+               <td>16:00 - 18:00</td>
+               <td>
+                  <strong>Windows rendszergazda</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-gyakorlat">Gyakorlat</span>
+               </td>
+               <td>L101</td>
+               <td>Dr. Wagner György</td>
+            </tr>
+            <tr class="elmelet">
+               <td>Szerda</td>
+               <td>08:00 - 10:00</td>
+               <td>
+                  <strong>Webes adatkezelő környezetek</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-elmelet">Elmélet</span>
+               </td>
+               <td>A1/310</td>
+               <td>Dr. Kovács László József</td>
+            </tr>
+            <tr class="gyakorlat">
+               <td>Szerda</td>
+               <td>10:00 - 12:00</td>
+               <td>
+                  <strong>Webes adatkezelő környezetek</strong>
+               </td>
+               <td>
+                  <span class="tipus-badge badge-gyakorlat">Gyakorlat</span>
+               </td>
+               <td>L1013</td>
+               <td>Dr. Bednarik László</td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+   <head>
+      <style>
+      table {
+        border-collapse: collapse;
+        border: 2px solid black;
+      }
+      th {
+        background-color: #9acd32; /* A képen látható zöldes szín */
+        color: black;
+        text-align: left;
+        padding: 5px;
+        border: 1px solid gray;
+      }
+      td {
+        padding: 5px;
+        border: 1px solid gray;
+      }
+    </style>
+   </head>
+   <body>
+      <h2>Hallgatok adatai - for-each, value-of</h2>
+      <table>
+         <tr>
+            <th>ID</th>
+            <th>Vezeteknev</th>
+            <th>Keresztnev</th>
+            <th>Becenev</th>
+            <th>Kor</th>
+            <th>Osztondij</th>
+         </tr>
+         <tr>
+            <td>01</td>
+            <td>Kun</td>
+            <td>Dávid</td>
+            <td>Kun</td>
+            <td>22</td>
+            <td>0</td>
+         </tr>
+         <tr>
+            <td>02</td>
+            <td>Kek</td>
+            <td>Dora</td>
+            <td>Dorka</td>
+            <td>20</td>
+            <td>52000</td>
+         </tr>
+         <tr>
+            <td>03</td>
+            <td>Zsoldos</td>
+            <td>Andrea</td>
+            <td>Andi</td>
+            <td>18</td>
+            <td>45000</td>
+         </tr>
+      </table>
+   </body>
+</html>
