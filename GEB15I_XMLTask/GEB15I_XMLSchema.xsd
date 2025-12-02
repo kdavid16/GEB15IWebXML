@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="CipoBoltAdatbazis">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Uzlet" type="UzletType" maxOccurs="unbounded"/>
+                <xs:element name="Raktar" type="RaktarType" maxOccurs="unbounded"/>
+                <xs:element name="Cipok" type="CipokType" maxOccurs="unbounded"/>
+                <xs:element name="vasarlo" type="VasarloType" maxOccurs="unbounded"/>
+                <xs:element name="rendeles" type="RendelesType" maxOccurs="unbounded"/>
+                <xs:element name="Kiszallitas" type="KiszallitasType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="UzletType">
+        <xs:sequence>
+            <xs:element name="elerhetoseg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="emailcim" type="xs:string"/>
+                        <xs:element name="telefon" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="nyitvatartas">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="tol" type="xs:string"/>
+                        <xs:element name="ig" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="cim" type="CimTypeSimple"/>
+            <xs:element name="nev" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="ukod" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="RaktarType">
+        <xs:sequence>
+            <xs:element name="kapacitas" type="xs:integer"/>
+            <xs:element name="muszak" type="xs:string"/>
+            <xs:element name="vezeto" type="xs:string"/>
+            <xs:element name="hely" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="rkod" type="xs:string" use="required"/>
+        <xs:attribute name="ukod" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="CipokType">
+        <xs:sequence>
+            <xs:element name="Keszlet" type="xs:integer"/>
+            <xs:element name="Marka" type="xs:string"/>
+            <xs:element name="modell" type="xs:string"/>
+            <xs:element name="ar" type="xs:integer"/>
+            <xs:element name="Meret" type="xs:integer"/>
+            <xs:element name="Szin" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="ckod" type="xs:string" use="required"/>
+        <xs:attribute name="ukod" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="VasarloType">
+        <xs:sequence>
+            <xs:element name="nev" type="xs:string"/>
+            <xs:element name="cim" type="CimTypeSimple"/>
+            <xs:element name="eletkor" type="xs:integer"/>
+            <xs:element name="fizetesi_mod">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="keszpenz" type="xs:string" minOccurs="0"/>
+                        <xs:element name="kartya" type="xs:string" minOccurs="0"/>
+                        <xs:element name="online" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="applepay" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="googlepay" type="xs:string" minOccurs="0"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="vkod" type="xs:string" use="required"/>
+        <xs:attribute name="ukod" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="RendelesType">
+        <xs:sequence>
+            <xs:element name="osszeg" type="xs:integer"/>
+            <xs:element name="cipo" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="rendeleskod" type="xs:string" use="required"/>
+        <xs:attribute name="ukod" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="KiszallitasType">
+        <xs:sequence>
+            <xs:element name="Kamion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="modell" type="xs:string"/>
+                        <xs:element name="rendszam" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Sofor" type="xs:string"/>
+            <xs:element name="Telefonszam" type="xs:string"/>
+            <xs:element name="Cim">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="orszag" type="xs:string"/>
+                        <xs:element name="varos" type="xs:string"/>
+                        <xs:element name="utca" type="xs:string"/>
+                        <xs:element name="hazszam" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="kkod" type="xs:string" use="required"/>
+        <xs:attribute name="ukod" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="CimTypeSimple">
+        <xs:sequence>
+            <xs:element name="varos" type="xs:string"/>
+            <xs:element name="utca" type="xs:string"/>
+            <xs:element name="hazszam" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,176 @@
+----------------------------------------
+UZLET
+----------------------------------------
+ukod: U001
+elerhetoseg:
+  emailcim: info@cipobolt.hu
+  telefon: +36301234567
+nyitvatartas:
+  tol: 08:00
+  ig: 20:00
+cim:
+  varos: Budapest
+  utca: Fő utca
+  hazszam: 10
+nev: KunKicks
+
+----------------------------------------
+RAKTAR
+----------------------------------------
+rkod: R001
+ukod: U001
+kapacitas: 5000
+muszak: Délelőtt
+vezeto: Kovács János
+hely: 3000
+
+----------------------------------------
+RAKTAR
+----------------------------------------
+rkod: R001
+ukod: U001
+kapacitas: 5000
+muszak: Délután
+vezeto: Kovács János
+hely: 3000
+
+----------------------------------------
+CIPOK
+----------------------------------------
+ckod: C999
+ukod: U001
+Keszlet: 50
+Marka: Nike
+modell: Air Max
+ar: 35000
+Meret: 42
+Szin: Fekete
+
+----------------------------------------
+CIPOK
+----------------------------------------
+ckod: C998
+ukod: U001
+Keszlet: 50
+Marka: Nike
+modell: Air Force
+ar: 45000
+Meret: 42
+Szin: Fehér
+
+----------------------------------------
+CIPOK
+----------------------------------------
+ckod: C997
+ukod: U001
+Keszlet: 40
+Marka: Nike
+modell: Jordan 1
+ar: 55000
+Meret: 43
+Szin: Piros
+
+----------------------------------------
+CIPOK
+----------------------------------------
+ckod: C996
+ukod: U001
+Keszlet: 30
+Marka: Nike
+modell: Jordan 4
+ar: 95000
+Meret: 41
+Szin: Sárga
+
+----------------------------------------
+CIPOK
+----------------------------------------
+ckod: C995
+ukod: U001
+Keszlet: 15
+Marka: Nike
+modell: Jordan 4
+ar: 105000
+Meret: 40
+Szin: Fehér
+
+----------------------------------------
+VASARLO
+----------------------------------------
+ukod: U001
+vkod: V555
+nev: Tóth Péter
+cim:
+  varos: Debrecen
+  utca: Kossuth utca
+  hazszam: 5
+eletkor: 30
+fizetesi_mod:
+  online:
+    applepay: true
+    googlepay: false
+
+----------------------------------------
+VASARLO
+----------------------------------------
+ukod: U001
+vkod: V556
+nev: Faragó René
+cim:
+  varos: Muhi
+  utca: Fő utca
+  hazszam: 3
+eletkor: 25
+fizetesi_mod:
+  online:
+    applepay: false
+    googlepay: false
+
+----------------------------------------
+RENDELES
+----------------------------------------
+rendeleskod: ORD777
+ukod: U001
+osszeg: 35000
+cipo: C999
+
+----------------------------------------
+RENDELES
+----------------------------------------
+rendeleskod: ORD888
+ukod: U001
+osszeg: 45000
+cipo: C998
+
+----------------------------------------
+KISZALLITAS
+----------------------------------------
+kkod: K888
+ukod: U001
+Kamion:
+  modell: Mercedes Sprinter
+  rendszam: ABC-123
+Sofor: Kiss Béla
+Telefonszam: +36209999999
+Cim:
+  orszag: Magyarország
+  varos: Muhi
+  utca: Fő utca
+  hazszam: 3
+
+----------------------------------------
+KISZALLITAS
+----------------------------------------
+kkod: K777
+ukod: U001
+Kamion:
+  modell: Mercedes Sprinter
+  rendszam: ABC-321
+Sofor: Kiss József
+Telefonszam: +36309999999
+Cim:
+  orszag: Magyarország
+  varos: Debrecen
+  utca: Kossuth utca
+  hazszam: 5
+

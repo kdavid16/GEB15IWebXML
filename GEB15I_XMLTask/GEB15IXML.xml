@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CipoBoltAdatbazis xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEB15I_XMLSchema.xsd">
+
+    <Uzlet ukod="U001">
+        <elerhetoseg>
+            <emailcim>info@cipobolt.hu</emailcim>
+            <telefon>+36301234567</telefon>
+        </elerhetoseg>
+        <nyitvatartas>
+            <tol>08:00</tol>
+            <ig>20:00</ig>
+        </nyitvatartas>
+        <cim>
+            <varos>Budapest</varos>
+            <utca>Fő utca</utca>
+            <hazszam>10</hazszam>
+        </cim>
+        <nev>KunKicks</nev>
+    </Uzlet>
+
+    <Raktar rkod="R001" ukod="U001">
+        <kapacitas>5000</kapacitas>
+        <muszak>Délelőtt</muszak>
+        <vezeto>Kovács János</vezeto>
+        <hely>3000</hely>
+    </Raktar>
+    <Raktar rkod="R001" ukod="U001">
+        <kapacitas>5000</kapacitas>
+        <muszak>Délután</muszak>
+        <vezeto>Kovács János</vezeto>
+        <hely>3000</hely>
+    </Raktar>
+
+    <Cipok ckod="C999" ukod="U001">
+        <Keszlet>50</Keszlet>
+        <Marka>Nike</Marka>
+        <modell>Air Max</modell>
+        <ar>35000</ar>
+        <Meret>42</Meret>
+        <Szin>Fekete</Szin>
+    </Cipok>
+    <Cipok ckod="C998" ukod="U001">
+        <Keszlet>50</Keszlet>
+        <Marka>Nike</Marka>
+        <modell>Air Force</modell>
+        <ar>45000</ar>
+        <Meret>42</Meret>
+        <Szin>Fehér</Szin>
+    </Cipok>
+    <Cipok ckod="C997" ukod="U001">
+        <Keszlet>40</Keszlet>
+        <Marka>Nike</Marka>
+        <modell>Jordan 1</modell>
+        <ar>55000</ar>
+        <Meret>43</Meret>
+        <Szin>Piros</Szin>
+    </Cipok>
+    <Cipok ckod="C996" ukod="U001">
+        <Keszlet>30</Keszlet>
+        <Marka>Nike</Marka>
+        <modell>Jordan 4</modell>
+        <ar>95000</ar>
+        <Meret>41</Meret>
+        <Szin>Sárga</Szin>
+    </Cipok>
+    <Cipok ckod="C995" ukod="U001">
+        <Keszlet>15</Keszlet>
+        <Marka>Nike</Marka>
+        <modell>Jordan 4</modell>
+        <ar>105000</ar>
+        <Meret>40</Meret>
+        <Szin>Fehér</Szin>
+    </Cipok>
+
+    <vasarlo vkod="V555" ukod="U001">
+        <nev>Tóth Péter</nev>
+        <cim>
+            <varos>Debrecen</varos>
+            <utca>Kossuth utca</utca>
+            <hazszam>5</hazszam>
+        </cim>
+        <eletkor>30</eletkor>
+        <fizetesi_mod>
+            <online>
+                <applepay>true</applepay>
+                <googlepay>false</googlepay>
+            </online>
+            </fizetesi_mod>
+    </vasarlo>
+    <vasarlo vkod="V556" ukod="U001">
+        <nev>Faragó René</nev>
+        <cim>
+            <varos>Muhi</varos>
+            <utca>Fő utca</utca>
+            <hazszam>3</hazszam>
+        </cim>
+        <eletkor>25</eletkor>
+        <fizetesi_mod>
+            <online>
+                <applepay>false</applepay>
+                <googlepay>false</googlepay>
+            </online>
+        </fizetesi_mod>
+    </vasarlo>
+
+    <rendeles rendeleskod="ORD777" ukod="U001">
+        <osszeg>35000</osszeg>
+        <cipo>C999</cipo>
+    </rendeles>
+    <rendeles rendeleskod="ORD888" ukod="U001">
+        <osszeg>45000</osszeg>
+        <cipo>C998</cipo>
+    </rendeles>
+
+    <Kiszallitas kkod="K888" ukod="U001">
+        <Kamion>
+            <modell>Mercedes Sprinter</modell>
+            <rendszam>ABC-123</rendszam>
+        </Kamion>
+        <Sofor>Kiss Béla</Sofor>
+        <Telefonszam>+36209999999</Telefonszam>
+        <Cim>
+            <orszag>Magyarország</orszag>
+            <varos>Muhi</varos>
+            <utca>Fő utca</utca>
+            <hazszam>3</hazszam>
+        </Cim>
+    </Kiszallitas>
+    <Kiszallitas kkod="K777" ukod="U001">
+        <Kamion>
+            <modell>Mercedes Sprinter</modell>
+            <rendszam>ABC-321</rendszam>
+        </Kamion>
+        <Sofor>Kiss József</Sofor>
+        <Telefonszam>+36309999999</Telefonszam>
+        <Cim>
+            <orszag>Magyarország</orszag>
+            <varos>Debrecen</varos>
+            <utca>Kossuth utca</utca>
+            <hazszam>5</hazszam>
+        </Cim>
+    </Kiszallitas>
+
+</CipoBoltAdatbazis>
