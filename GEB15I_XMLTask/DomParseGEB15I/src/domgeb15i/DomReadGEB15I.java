@@ -60,7 +60,6 @@ public class DomReadGEB15I {
         }
     }
 
-    // Módosítottuk a függvényt: most már várja a 'writer'-t is paraméterként
     /**
      * Rekurzívan bejárja a DOM-fát és kiírja az elemeket és attribútumokat.
      * @param node A feldolgozandó csomópont.
@@ -115,7 +114,6 @@ public class DomReadGEB15I {
         return false;
     }
 
-    // --- ÚJ SEGÉDMETÓDUS ---
     /**
      * Segédmetódus, amely egyszerre ír a konzolra és a megadott PrintWriter-be.
      * @param text A kiírandó szöveg.

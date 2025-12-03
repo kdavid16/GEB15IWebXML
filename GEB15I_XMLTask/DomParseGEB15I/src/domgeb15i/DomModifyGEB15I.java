@@ -27,7 +27,7 @@ public class DomModifyGEB15I {
             Document doc = docBuilder.parse(inputFile);
 
             // --------------------------------------------------------
-            // 1. FELADAT: Cipők módosítása (Korábbi feladat)
+            // 1. FELADAT: Cipők módosítása
             // --------------------------------------------------------
             // Az első 'Cipok' elem lekérdezése
             Node cipok = doc.getElementsByTagName("Cipok").item(0);
