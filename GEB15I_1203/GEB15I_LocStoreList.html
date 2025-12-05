@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEB15I Órarend List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-card {
+            border-left: 5px solid #0d6efd;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .course-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .course-details {
+            color: #555;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>NEPTUNKÓD Órarend JSON (Lista)</h2>
+
+        <div class="mb-4">
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="jsonFile" accept=".json">
+                <button class="btn btn-secondary" type="button" onclick="loadToLocalStorage()">LocalStorage
+                    betöltése</button>
+            </div>
+
+            <div class="mb-3">
+                <label for="search" class="form-label">Keresés tárgy szerint:</label>
+                <input type="text" class="form-control" id="search" placeholder="WebXML">
+            </div>
+        </div>
+
+        <div id="courseList">
+            <!-- Courses will be injected here -->
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'GEB15I_timetable';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderList();
+            document.getElementById('search').addEventListener('input', renderList);
+        });
+
+        function loadToLocalStorage() {
+            const fileInput = document.getElementById('jsonFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                // Try to fetch the default file if no file selected (for convenience)
+                fetch('orarendGEB15I.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        saveData(data);
+                        alert('Adatok betöltve a LocalStorage-ba (alapértelmezett fájlból)!');
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Kérem válasszon ki egy fájlt!');
+                    });
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    saveData(data);
+                    alert('Sikeres betöltés!');
+                } catch (error) {
+                    alert('Hiba a fájl feldolgozásakor!');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function saveData(data) {
+            // Handle both old array format and new object format
+            let courses = [];
+            if (Array.isArray(data)) {
+                courses = data;
+            } else if (data.GEB15I_orarend && Array.isArray(data.GEB15I_orarend.ora)) {
+                courses = data.GEB15I_orarend.ora;
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(courses));
+            renderList();
+        }
+
+        function renderList() {
+            const container = document.getElementById('courseList');
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const stored = localStorage.getItem(STORAGE_KEY);
+
+            if (!stored) {
+                container.innerHTML = '<p class="text-muted">Nincs megjeleníthető adat. Kérem töltsön be egy JSON fájlt.</p>';
+                return;
+            }
+
+            const courses = JSON.parse(stored);
+
+            // Helper to safely get properties regardless of structure
+            const getProp = (c, key) => {
+                // New structure mapping
+                if (c.targy) {
+                    if (key === 'subject') return c.targy;
+                    if (key === 'day') return c.idopont.nap;
+                    if (key === 'start') return c.idopont.tol;
+                    if (key === 'end') return c.idopont.ig;
+                    if (key === 'location') return c.helyszin;
+                    if (key === 'teacher') return c.oktato;
+                    if (key === 'major') return c.szak;
+                }
+                // Old structure fallback
+                return c[key];
+            };
+
+            const filtered = courses.filter(c => getProp(c, 'subject').toLowerCase().includes(searchTerm));
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<p class="text-muted">Nincs találat.</p>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(c => `
+            <div class="course-card">
+                <div class="course-title">${getProp(c, 'subject')}</div>
+                <div class="course-details">
+                    <strong>Nap:</strong> ${getProp(c, 'day')}<br>
+                    <strong>Idő:</strong> ${getProp(c, 'start')} - ${getProp(c, 'end')}<br>
+                    <strong>Helyszín:</strong> ${getProp(c, 'location')}<br>
+                    <strong>Oktató:</strong> ${getProp(c, 'teacher')}<br>
+                    <strong>Szak:</strong> ${getProp(c, 'major')}
+                </div>
+            </div>
+        `).join('');
+        }
+    </script>
+
+</body>
+
+</html>

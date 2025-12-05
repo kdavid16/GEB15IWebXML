@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEB15I Órarend Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1000px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>NEPTUNKÓD Órarend JSON (Táblázat)</h2>
+
+        <div class="mb-4">
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="jsonFile" accept=".json">
+                <button class="btn btn-secondary" type="button" onclick="loadToLocalStorage()">LocalStorage
+                    betöltése</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Tárgy</th>
+                        <th>Nap</th>
+                        <th>Tól</th>
+                        <th>Ig</th>
+                        <th>Helyszín</th>
+                        <th>Oktató</th>
+                        <th>Szak</th>
+                    </tr>
+                </thead>
+                <tbody id="courseTableBody">
+                    <!-- Data will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'GEB15I_timetable';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable();
+        });
+
+        function loadToLocalStorage() {
+            const fileInput = document.getElementById('jsonFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                // Try to fetch the default file if no file selected
+                fetch('orarendGEB15I.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        saveData(data);
+                        alert('Adatok betöltve a LocalStorage-ba (alapértelmezett fájlból)!');
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Kérem válasszon ki egy fájlt!');
+                    });
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    saveData(data);
+                    alert('Sikeres betöltés!');
+                } catch (error) {
+                    alert('Hiba a fájl feldolgozásakor!');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function saveData(data) {
+            // Handle both old array format and new object format
+            let courses = [];
+            if (Array.isArray(data)) {
+                courses = data;
+            } else if (data.GEB15I_orarend && Array.isArray(data.GEB15I_orarend.ora)) {
+                courses = data.GEB15I_orarend.ora;
+            }
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(courses));
+            renderTable();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('courseTableBody');
+            const stored = localStorage.getItem(STORAGE_KEY);
+
+            if (!stored) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">Nincs megjeleníthető adat.</td></tr>';
+                return;
+            }
+
+            const courses = JSON.parse(stored);
+
+            // Helper to safely get properties regardless of structure
+            const getProp = (c, key) => {
+                // New structure mapping
+                if (c.targy) {
+                    if (key === 'subject') return c.targy;
+                    if (key === 'day') return c.idopont.nap;
+                    if (key === 'start') return c.idopont.tol;
+                    if (key === 'end') return c.idopont.ig;
+                    if (key === 'location') return c.helyszin;
+                    if (key === 'teacher') return c.oktato;
+                    if (key === 'major') return c.szak;
+                }
+                // Old structure fallback
+                return c[key];
+            };
+
+            tbody.innerHTML = courses.map(c => `
+            <tr>
+                <td>${getProp(c, 'subject')}</td>
+                <td>${getProp(c, 'day')}</td>
+                <td>${getProp(c, 'start')}</td>
+                <td>${getProp(c, 'end')}</td>
+                <td>${getProp(c, 'location')}</td>
+                <td>${getProp(c, 'teacher')}</td>
+                <td>${getProp(c, 'major')}</td>
+            </tr>
+        `).join('');
+        }
+    </script>
+
+</body>
+
+</html>
