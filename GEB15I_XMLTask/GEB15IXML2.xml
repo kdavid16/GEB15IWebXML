@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><CipoBoltAdatbazis xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><GEB15IXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEB15I_XMLSchema.xsd">
 
     <Uzlet ukod="U001">
         <elerhetoseg>
@@ -23,7 +23,7 @@
         <vezeto>Lakatos Ali</vezeto>
         <hely>3000</hely>
     </Raktar>
-    <Raktar rkod="R001" ukod="U001">
+    <Raktar rkod="R002" ukod="U001">
         <kapacitas>5000</kapacitas>
         <muszak>Délután</muszak>
         <vezeto>Kovács János</vezeto>
@@ -84,7 +84,7 @@
                 <applepay>true</applepay>
                 <googlepay>false</googlepay>
             </online>
-            </fizetesi_mod>
+        </fizetesi_mod>
     </vasarlo>
     <vasarlo ukod="U001" vkod="V556">
         <nev>Faragó René</nev>
@@ -102,13 +102,17 @@
         </fizetesi_mod>
     </vasarlo>
 
-    <rendeles rendeleskod="ORD777" ukod="U001">
+    <rendeles rendeleskod="ORD777" ukod="U001" vkod="V555">
+        <datum>2023-11-20</datum>
         <osszeg>35000</osszeg>
         <cipo>C999</cipo>
+        <mennyiseg>1</mennyiseg>
     </rendeles>
-    <rendeles rendeleskod="ORD888" ukod="U001">
-        <osszeg>45000</osszeg>
+    <rendeles rendeleskod="ORD888" ukod="U001" vkod="V555">
+        <datum>2023-11-21</datum>
+        <osszeg>90000</osszeg>
         <cipo>C998</cipo>
+        <mennyiseg>2</mennyiseg>
     </rendeles>
 
     <Kiszallitas kkod="K888" ukod="U001">
@@ -140,4 +144,4 @@
         </Cim>
     </Kiszallitas>
 
-</CipoBoltAdatbazis>
+</GEB15IXML>

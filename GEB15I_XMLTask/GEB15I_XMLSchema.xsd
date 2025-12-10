@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="CipoBoltAdatbazis">
+    <xs:element name="GEB15IXML">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="Uzlet" type="UzletType" maxOccurs="unbounded"/>
@@ -12,7 +12,70 @@
                 <xs:element name="Kiszallitas" type="KiszallitasType" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
+
+        <xs:key name="UzletKey">
+            <xs:selector xpath="Uzlet"/>
+            <xs:field xpath="@ukod"/>
+        </xs:key>
+
+        <xs:key name="CipoKey">
+            <xs:selector xpath="Cipok"/>
+            <xs:field xpath="@ckod"/>
+        </xs:key>
+
+        <xs:key name="RaktarKey">
+            <xs:selector xpath="Raktar"/>
+            <xs:field xpath="@rkod"/>
+        </xs:key>
+
+        <xs:key name="VasarloKey">
+            <xs:selector xpath="vasarlo"/>
+            <xs:field xpath="@vkod"/>
+        </xs:key>
+
+        <xs:key name="RendelesKey">
+            <xs:selector xpath="rendeles"/>
+            <xs:field xpath="@rendeleskod"/>
+        </xs:key>
+
+        <xs:key name="KiszallitasKey">
+            <xs:selector xpath="Kiszallitas"/>
+            <xs:field xpath="@kkod"/>
+        </xs:key>
+
+        <xs:keyref name="RaktarToUzletRef" refer="UzletKey">
+            <xs:selector xpath="Raktar"/>
+            <xs:field xpath="@ukod"/>
+        </xs:keyref>
+        <xs:keyref name="CipoToUzletRef" refer="UzletKey">
+            <xs:selector xpath="Cipok"/>
+            <xs:field xpath="@ukod"/>
+        </xs:keyref>
+        <xs:keyref name="VasarloToUzletRef" refer="UzletKey">
+            <xs:selector xpath="vasarlo"/>
+            <xs:field xpath="@ukod"/>
+        </xs:keyref>
+        <xs:keyref name="RendelesToUzletRef" refer="UzletKey">
+            <xs:selector xpath="rendeles"/>
+            <xs:field xpath="@ukod"/>
+        </xs:keyref>
+        <xs:keyref name="KiszallitasToUzletRef" refer="UzletKey">
+            <xs:selector xpath="Kiszallitas"/>
+            <xs:field xpath="@ukod"/>
+        </xs:keyref>
+
+        <xs:keyref name="RendelesToCipoRef" refer="CipoKey">
+            <xs:selector xpath="rendeles"/>
+            <xs:field xpath="cipo"/>
+        </xs:keyref>
+
+        <xs:keyref name="RendelesToVasarloRef" refer="VasarloKey">
+            <xs:selector xpath="rendeles"/>
+            <xs:field xpath="@vkod"/>
+        </xs:keyref>
+
     </xs:element>
+
 
     <xs:complexType name="UzletType">
         <xs:sequence>
@@ -32,7 +95,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="cim" type="CimTypeSimple"/>
+            <xs:element name="cim" type="CimType"/>
             <xs:element name="nev" type="xs:string"/>
         </xs:sequence>
         <xs:attribute name="ukod" type="xs:string" use="required"/>
@@ -46,7 +109,7 @@
             <xs:element name="hely" type="xs:string"/>
         </xs:sequence>
         <xs:attribute name="rkod" type="xs:string" use="required"/>
-        <xs:attribute name="ukod" type="xs:string"/>
+        <xs:attribute name="ukod" type="xs:string" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="CipokType">
@@ -59,24 +122,22 @@
             <xs:element name="Szin" type="xs:string"/>
         </xs:sequence>
         <xs:attribute name="ckod" type="xs:string" use="required"/>
-        <xs:attribute name="ukod" type="xs:string"/>
+        <xs:attribute name="ukod" type="xs:string" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="VasarloType">
         <xs:sequence>
             <xs:element name="nev" type="xs:string"/>
-            <xs:element name="cim" type="CimTypeSimple"/>
+            <xs:element name="cim" type="CimType"/>
             <xs:element name="eletkor" type="xs:integer"/>
             <xs:element name="fizetesi_mod">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="keszpenz" type="xs:string" minOccurs="0"/>
-                        <xs:element name="kartya" type="xs:string" minOccurs="0"/>
-                        <xs:element name="online" minOccurs="0">
+                        <xs:element name="online">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="applepay" type="xs:string" minOccurs="0"/>
-                                    <xs:element name="googlepay" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="applepay" type="xs:string"/>
+                                    <xs:element name="googlepay" type="xs:string"/>
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>
@@ -85,16 +146,19 @@
             </xs:element>
         </xs:sequence>
         <xs:attribute name="vkod" type="xs:string" use="required"/>
-        <xs:attribute name="ukod" type="xs:string"/>
+        <xs:attribute name="ukod" type="xs:string" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="RendelesType">
         <xs:sequence>
+            <xs:element name="datum" type="xs:date"/>
             <xs:element name="osszeg" type="xs:integer"/>
             <xs:element name="cipo" type="xs:string"/>
+            <xs:element name="mennyiseg" type="xs:integer"/>
         </xs:sequence>
         <xs:attribute name="rendeleskod" type="xs:string" use="required"/>
-        <xs:attribute name="ukod" type="xs:string"/>
+        <xs:attribute name="ukod" type="xs:string" use="required"/>
+        <xs:attribute name="vkod" type="xs:string" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="KiszallitasType">
@@ -109,23 +173,15 @@
             </xs:element>
             <xs:element name="Sofor" type="xs:string"/>
             <xs:element name="Telefonszam" type="xs:string"/>
-            <xs:element name="Cim">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="orszag" type="xs:string"/>
-                        <xs:element name="varos" type="xs:string"/>
-                        <xs:element name="utca" type="xs:string"/>
-                        <xs:element name="hazszam" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="Cim" type="CimType"/>
         </xs:sequence>
         <xs:attribute name="kkod" type="xs:string" use="required"/>
-        <xs:attribute name="ukod" type="xs:string"/>
+        <xs:attribute name="ukod" type="xs:string" use="required"/>
     </xs:complexType>
 
-    <xs:complexType name="CimTypeSimple">
+    <xs:complexType name="CimType">
         <xs:sequence>
+            <xs:element name="orszag" type="xs:string" minOccurs="0"/>
             <xs:element name="varos" type="xs:string"/>
             <xs:element name="utca" type="xs:string"/>
             <xs:element name="hazszam" type="xs:string"/>

@@ -16,7 +16,7 @@ public class DomReadGEB15I {
 
         try {
             // XML fájl beolvasása
-            File xmlFile = new File("Cipobolt.xml");
+            File xmlFile = new File("GEB15IXML.xml");
             
             // Fájl író létrehozása a kimeneti .txt fájlhoz, UTF-8 kódolással
             writer = new PrintWriter("GEB15IXML.txt", "UTF-8");
@@ -48,7 +48,7 @@ public class DomReadGEB15I {
                 }
             }
             
-            System.out.println("A kiírás kész! Ellenőrizd a GEB15IXML.txt fájlt.");
+            System.out.println("A kiírás kész!");
 
         } catch (Exception e) {
             e.printStackTrace();

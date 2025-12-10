@@ -27,7 +27,7 @@ hely: 3000
 ----------------------------------------
 RAKTAR
 ----------------------------------------
-rkod: R001
+rkod: R002
 ukod: U001
 kapacitas: 5000
 muszak: Délután
@@ -131,16 +131,22 @@ RENDELES
 ----------------------------------------
 rendeleskod: ORD777
 ukod: U001
+vkod: V555
+datum: 2023-11-20
 osszeg: 35000
 cipo: C999
+mennyiseg: 1
 
 ----------------------------------------
 RENDELES
 ----------------------------------------
 rendeleskod: ORD888
 ukod: U001
-osszeg: 45000
+vkod: V555
+datum: 2023-11-21
+osszeg: 90000
 cipo: C998
+mennyiseg: 2
 
 ----------------------------------------
 KISZALLITAS

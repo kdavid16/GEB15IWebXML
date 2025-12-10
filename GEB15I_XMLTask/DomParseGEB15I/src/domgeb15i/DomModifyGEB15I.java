@@ -109,12 +109,12 @@ public class DomModifyGEB15I {
             DOMSource source = new DOMSource(doc);
             
             // A kimeneti fájl meghatározása
-            StreamResult result = new StreamResult(new File("GEB15IXML1.xml"));
+            StreamResult result = new StreamResult(new File("GEB15IXML2.xml"));
             
             transformer.transform(source, result);
 
             System.out.println("Minden módosítás sikeresen végrehajtva!");
-            System.out.println("Eredmény mentve: GEB15IXML1.xml");
+            System.out.println("Eredmény mentve: GEB15IXML2.xml");
 
         } catch (Exception e) {
             e.printStackTrace();
